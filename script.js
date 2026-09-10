@@ -30,7 +30,7 @@ setInterval(() => {
     horas.textContent = Math.floor(tempo / (1000 * 60 * 60)) % 60;
     dias.textContent = Math.floor(tempo / (1000 * 60 * 60 * 24)) % 24;
     semanas.textContent = Math.floor(tempo / (1000 * 60 * 60 * 24 * 7)) % 7;
-    meses.textContent = Math.floor(tempo / (1000 * 60 * 60 * 24 * 30));
+    meses.textContent = Math.floor(tempo / (1000 * 60 * 60 * 24 * 30)) % 30;
     anos.textContent = Math.floor(tempo / (1000 * 60 * 60 * 24 * 365)) % 365;
 
 }, 1000)
