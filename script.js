@@ -1,5 +1,6 @@
 const segundos = document.getElementById("segundos");
 const minutos = document.getElementById("minutos");
+const horas = document.getElementById("horas");
 const dias = document.getElementById("dias");
 const semanas = document.getElementById("semanas");
 const meses = document.getElementById("meses");
@@ -26,6 +27,7 @@ setInterval(() => {
 
     segundos.textContent = Math.floor(tempo / 1000) % 60;
     minutos.textContent = Math.floor(tempo / (1000 * 60)) % 60;
+    horas.textContent = Math.floor(tempo / (1000 * 60 * 60)) % 60;
     dias.textContent = Math.floor(tempo / (1000 * 60 * 60 * 24)) % 24;
     semanas.textContent = Math.floor(tempo / (1000 * 60 * 60 * 24 * 7)) % 7;
     meses.textContent = Math.floor(tempo / (1000 * 60 * 60 * 24 * 30));
