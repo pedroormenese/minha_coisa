@@ -3,13 +3,21 @@ const minutos = document.getElementById("minutos");
 const dias = document.getElementById("dias");
 const semanas = document.getElementById("semanas");
 const meses = document.getElementById("meses");
+const anos = document.getElementById("anos");
 const reset = document.getElementById("reset");
 const contagem = document.getElementById("contagem");
 
 let contador_numero = Number(localStorage.getItem("contador"));
 contagem.textContent = contador_numero;
 
-let contador_data = new Date(localStorage.getItem("data")) || new Date();
+let contador_data = localStorage.getItem("data"); //Se não existir data no localstorage essa porra vai retornar null. Se retornar null, na hora de criar data ele mete o ano de 1970
+
+if (contador_data) { //Se já existir no local storage, ele vai pegar aquela data e reutilizar
+    contador_data = new Date(contador_data);
+} else { //Se não existir, ele vai criar uma data nova a partir de agora
+    contador_data = new Date();
+    localStorage.setItem("data", contador_data.toISOString());
+}
 
 setInterval(() => {
     const agora = new Date();
@@ -32,7 +40,7 @@ reset.addEventListener('click', () => {
     contagem.innerText = contador_numero;
 
     localStorage.setItem("contador", contador_numero);
-    localStorage.setItem("data", contador_data);
+    localStorage.setItem("data", contador_data.toISOString());
 })
 
 
