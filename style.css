@@ -4,10 +4,28 @@
     box-sizing: border-box;
 }
 
+
 body, html {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    position: relative;
+    
+}
+
+body::before {
+    position: fixed;
+    content: "";
+
+    z-index: -1;
+    background: conic-gradient(
+        #90455C 0%,
+        #41477D 30%,
+        #360B38 70%
+    );
+
+    inset: -1000px;
+    filter: blur(30px);
 }
 
 .flex {
@@ -15,19 +33,7 @@ body, html {
     gap: 10px;
 }
 
-.background {
-    z-index: -1;
-    position: fixed;
-    inset: -30px;
 
-    background: conic-gradient(
-        #90455C 0%,
-        #41477D 30%,
-        #360B38 70%
-    );
-
-    filter: blur(10px);
-}
 
 main {
     display: flex;
