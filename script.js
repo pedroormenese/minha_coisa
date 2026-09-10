@@ -6,16 +6,15 @@ const meses = document.getElementById("meses");
 const reset = document.getElementById("reset");
 const contagem = document.getElementById("contagem");
 
-let contador = Number(localStorage.getItem("contador"));
-contagem.textContent = contador;
+let contador_numero = Number(localStorage.getItem("contador"));
+contagem.textContent = contador_numero;
 
-
-let inicio = new Date("2026-09-10T10:00:00");
+let contador_data = new Date(localStorage.getItem("data")) || new Date();
 
 setInterval(() => {
     const agora = new Date();
 
-    const tempo = agora - inicio;
+    const tempo = agora - contador_data;
 
     segundos.textContent = Math.floor(tempo / 1000) % 60;
     minutos.textContent = Math.floor(tempo / (1000 * 60)) % 60;
@@ -27,12 +26,13 @@ setInterval(() => {
 }, 1000)
 
 reset.addEventListener('click', () => {
-    inicio = Date.now();
+    contador_data = new Date();
 
-    contador++;
-    contagem.innerText = contador;
+    contador_numero++;
+    contagem.innerText = contador_numero;
 
-    localStorage.setItem("contador", contador);
+    localStorage.setItem("contador", contador_numero);
+    localStorage.setItem("data", contador_data);
 })
 
 
